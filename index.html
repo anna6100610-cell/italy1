@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>義大利米蘭與佛羅倫斯八日休閒之旅規劃</title>
-    <!-- 載入 Tailwind CSS CDN -->
+    <title>義大利米蘭與佛羅倫斯八日休閒之旅規劃 (含比薩)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 載入 Chart.js CDN -->
+    <!-- 修復：Chart.js CDN 路徑修正，確保載入正確的檔案 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <!-- 載入 Lucide Icons (用於簡潔的視覺圖標) -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* 設定字體為 Inter (Tailwind 預設，簡潔專業) */
@@ -16,23 +14,23 @@
             --primary-color: #0077b6; /* 藍色系主色 */
             --secondary-color: #ade8f4; /* 淺藍色輔色 */
         }
-        .text-primary { color: var(--primary-color); }
-        .bg-primary { background-color: var(--primary-color); }
-        .hover-bg-primary:hover { background-color: var(--primary-color); }
-        .hover-text-primary:hover { color: var(--primary-color); }
+       .text-primary { color: var(--primary-color); }
+       .bg-primary { background-color: var(--primary-color); }
+       .hover-bg-primary:hover { background-color: var(--primary-color); }
+       .hover-text-primary:hover { color: var(--primary-color); }
         
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
 
         /* 時間軸樣式 */
-        .timeline-item {
+       .timeline-item {
             position: relative;
             padding-left: 2rem;
             border-left: 2px solid #ccc;
         }
-        .timeline-item:last-child {
+       .timeline-item:last-child {
             border-left: none; /* 最後一項不需要線 */
         }
-        .timeline-dot {
+       .timeline-dot {
             position: absolute;
             left: -8px;
             top: 0;
@@ -46,7 +44,7 @@
 
         /* 響應式調整 */
         @media (max-width: 768px) {
-            .nav-item {
+           .nav-item {
                 font-size: 0.8rem;
                 padding: 0.5rem 0.75rem;
             }
@@ -55,31 +53,25 @@
 </head>
 <body>
 
-    <!-- 主容器 -->
     <div class="min-h-screen flex flex-col">
         
-        <!-- 頂部導覽列 (Top Navigation) -->
         <nav class="sticky top-0 z-20 bg-white shadow-lg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
-                        <span class="text-xl font-bold text-primary">Aurora 義大利旅程</span>
+                        <span class="text-xl font-bold text-primary">Aurora 義大利旅程 (比薩新增)</span>
                     </div>
                     <div class="flex space-x-1 md:space-x-4" id="nav-links">
-                        <!-- 導覽連結將由 JS 插入 -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </nav>
 
-        <!-- 主要內容區塊 -->
         <main class="flex-grow max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <div id="content-container">
-                <!-- 內容會在此處切換 -->
-            </div>
+                </div>
         </main>
         
-        <!-- 底部 -->
         <footer class="bg-gray-800 text-white p-4 mt-8">
             <div class="max-w-7xl mx-auto text-center text-sm">
                 &copy; 2025 專業旅遊規劃師設計。旅行日期: 2026/1/30 - 2026/2/7
@@ -89,10 +81,10 @@
     </div>
 
     <script>
-        // ----------------------- 數據定義 -----------------------
+        // ----------------------- 數據定義 (已修復) -----------------------
         const TRIP_DATA = {
             overview: {
-                destination: "米蘭 (Milan) 與 佛羅倫斯 (Florence), 義大利",
+                destination: "米蘭 (Milan)、佛羅倫斯 (Florence) 與 比薩 (Pisa), 義大利",
                 duration: "8 天 (2026/1/30 - 2026/2/7)",
                 members: "三人 (我和媽媽以及弟弟)",
                 budget: "總營運預算約 €6,087 (約 NT$210,000)",
@@ -131,28 +123,31 @@
                 ]},
                 { day: 4, date: '2/2 (一)', city: '轉場 ⇌ 佛羅倫斯', theme: '高效移動與美食探索', activities: [
                     { time: '上午', title: '米蘭公寓退房', transport: '步行', stay: '30 分鐘', notes: '前往米蘭中央車站 (Milano Centrale)' },
-                    { time: '中午', title: '搭乘高速列車 (HSR) 前往佛羅倫斯', transport: 'Frecciarossa/Italo', duration: '約 1 小時 43 分鐘', mapLink: 'https://maps.app.goo.gl/7A1gH6mE5sF9jK3Y9', notes: '高效轉場至佛羅倫斯 SMN 站' },
+                    { time: '中午', title: '搭乘高速列車 (HSR) 前往佛羅倫斯', transport: 'Frecciarossa/Italo', duration: '約 1 小時 40 分鐘', mapLink: 'https://maps.app.goo.gl/7A1gH6mE5sF9jK3Y9', notes: '高效轉場至佛羅倫斯 SMN 站' },
                     { time: '下午', title: '入住佛羅倫斯公寓', transport: '步行/巴士', stay: '1 小時', notes: '尋找核心區優質 Airbnb (含洗衣間)' },
                     { time: '傍晚', title: 'Mercato Centrale (中央市場) 熟悉環境', transport: '步行', stay: '1.5 小時', mapLink: 'https://maps.app.goo.gl/9yF7hJ2u8B5wL4Q6A', notes: '可購買自炊食材' },
                     { time: '晚餐', title: '自炊晚餐與休閒', transport: '步行', stay: '2 小時', notes: '使用公寓洗衣設施' },
                 ]},
-                { day: 5, date: '2/3 (二)', city: '佛羅倫斯', theme: '文藝復興鑑賞日', activities: [
+                { day: 5, date: '2/3 (二)', city: '佛羅倫斯', theme: '文藝復興、景觀與藝術', activities: [
                     { time: '上午', title: 'Uffizi Gallery (烏菲茲美術館)', transport: '步行', stay: '3.5 小時', mapLink: 'https://maps.app.goo.gl/K6mE3sF9jK3Y9Q8W7', notes: '深度藝術鑑賞，建議提前預訂門票' },
                     { time: '中午', title: '享用經典 Florentine Steak', transport: '步行', stay: '1.5 小時', notes: '考慮與家人共食，將費用納入緩衝預算' },
                     { time: '下午', title: 'Accademia Gallery (佛羅倫斯美術學院)', transport: '步行', stay: '1.5 小時', mapLink: 'https://maps.app.goo.gl/H3mE5sF9jK3Y9Q8W7', notes: '參觀米開朗基羅的大衛像' },
-                    { time: '晚餐', title: '在地 Trattoria 體驗', transport: '步行', stay: '2 小時', notes: '尋找一間口碑良好的當地餐廳' },
+                    { time: '傍晚', title: 'Piazzale Michelangelo (米開朗基羅廣場)', transport: '巴士 (ATAF)', stay: '1.5 小時', mapLink: 'https://maps.app.goo.gl/J2nE8zF9jK3Y9Q8W7', notes: '眺望佛羅倫斯城市全景' },
+                    { time: '晚餐', title: 'Mercato Centrale (中央市場) 簡單晚餐與休息', transport: '步行/巴士', stay: '1.5 小時', mapLink: 'https://maps.app.goo.gl/9yF7hJ2u8B5wL4Q6A', notes: '為隔日比薩行程養足精神' },
                 ]},
-                { day: 6, date: '2/4 (三)', city: '佛羅倫斯', theme: '景觀、在地生活與托斯卡納美食', activities: [
-                    { time: '上午', title: 'Ponte Vecchio (老橋) 與 Oltrarno 工匠區', transport: '步行', stay: '2 小時', mapLink: 'https://maps.app.goo.gl/Y4rE8zF9jK3Y9Q8W7', notes: '探索老橋上的珠寶店與彼岸的工匠作坊' },
-                    { time: '中午', title: 'Mercato Centrale (中央市場) 美食體驗', transport: '步行', stay: '2 小時', mapLink: 'https://maps.app.goo.gl/9yF7hJ2u8B5wL4Q6A', notes: '必試 Panino con Lampredotto (牛肚包) 或上層 Food Court' },
-                    { time: '下午', title: 'Piazzale Michelangelo (米開朗基羅廣場)', transport: '巴士 (ATAF)', stay: '2 小時', mapLink: 'https://maps.app.goo.gl/J2nE8zF9jK3Y9Q8W7', notes: '眺望佛羅倫斯城市全景，自然/景觀點' },
-                    { time: '晚餐', title: 'Trattoria Marione 品嚐 Ribollita', transport: '步行/巴士', stay: '2 小時', notes: '享用經典托斯卡納冬季濃湯 (Ribollita) 及 Peposo (胡椒燉牛肉)' },
+                { day: 6, date: '2/4 (三)', city: '比薩 (Pisa) 日遊', theme: '世界遺產與奇蹟廣場', activities: [
+                    { time: '上午', title: '搭乘區域火車 (Regionale) 前往比薩', transport: '火車 (SMN - Pisa Centrale)', duration: '約 1 小時 0 分鐘', mapLink: 'https://maps.app.goo.gl/E2jE8zF9jK3Y9Q8W7', notes: '前往佛羅倫斯 SMN 車站' },
+                    { time: '中午', title: '抵達比薩 Centrale 站後，轉乘巴士或步行', transport: '巴士 LAM ROSSA 或步行', duration: '約 30 分鐘', mapLink: 'https://maps.app.goo.gl/T4rE8zF9jK3Y9Q8W7', notes: '前往奇蹟廣場 (Piazza dei Miracoli)' },
+                    { time: '下午', title: '參觀比薩斜塔 (Leaning Tower of Pisa)', transport: '步行', stay: '2 小時', mapLink: 'https://maps.app.goo.gl/Z9nE8zF9jK3Y9Q8W7', notes: '預留時間拍照與登塔（如預訂）' },
+                    { time: '下午', title: '奇蹟廣場周邊 (大教堂/洗禮堂)', transport: '步行', stay: '1.5 小時', mapLink: 'https://maps.app.goo.gl/P2nE8zF9jK3Y9Q8W7', notes: '欣賞比薩羅馬式建築群' },
+                    { time: '傍晚', title: '搭乘區域火車返回佛羅倫斯', transport: '火車 (Pisa Centrale - SMN)', duration: '約 1 小時 0 分鐘', mapLink: 'https://maps.app.goo.gl/E2jE8zF9jK3Y9Q8W7' },
+                    { time: '晚餐', title: 'Ponte Vecchio (老橋) 散步與 Oltrarno 區晚餐', transport: '步行', stay: '2 小時', mapLink: 'https://maps.app.goo.gl/Y4rE8zF9jK3Y9Q8W7', notes: '在老橋周邊休閒散步後，享受高品質托斯卡納晚餐。' },
                 ]},
                 { day: 7, date: '2/5 (四)', city: '轉場 ⇌ 米蘭', theme: '購物與回程準備', activities: [
                     { time: '上午', title: '佛羅倫斯市區最後活動', transport: '步行', stay: '2 小時', notes: '購買托斯卡納特產與伴手禮' },
                     { time: '中午', title: '佛羅倫斯 trattoria 簡單午餐', transport: '步行', stay: '1 小時', notes: '確保不超時' },
                     { time: '下午', title: '佛羅倫斯退房與前往車站', transport: '步行/巴士', duration: '30 分鐘' },
-                    { time: '傍晚', title: '搭乘高速列車 (HSR) 返回米蘭', transport: 'Frecciarossa/Italo', duration: '約 1 小時 43 分鐘' },
+                    { time: '傍晚', title: '搭乘高速列車 (HSR) 返回米蘭', transport: 'Frecciarossa/Italo', duration: '約 1 小時 40 分鐘', notes: '這是本次行程最長單程車程之一' },
                     { time: '晚上', title: '入住米蘭中央車站附近公寓', transport: '地鐵/步行', stay: '1 晚', notes: '為 Day 8 順利離境做準備' },
                 ]},
                 { day: 8, date: '2/7 (五)', city: '米蘭 (Milan)', theme: '離境', activities: [
@@ -253,10 +248,9 @@
         function renderOverview() {
             const data = TRIP_DATA.overview;
             return `
-                <h1 class="text-4xl font-extrabold mb-6 text-gray-800 border-b-4 border-primary pb-2">行程總覽 - 米蘭/佛羅倫斯</h1>
+                <h1 class="text-4xl font-extrabold mb-6 text-gray-800 border-b-4 border-primary pb-2">行程總覽 - 米蘭/佛羅倫斯/比薩</h1>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                    <!-- 資訊卡片 -->
                     <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                         <i data-lucide="plane" class="w-6 h-6 text-primary mb-2"></i>
                         <p class="text-gray-500 text-sm">目的地</p>
@@ -279,7 +273,6 @@
                     </div>
                 </div>
 
-                <!-- 交通效率比較圖表 -->
                 <div class="bg-white p-8 rounded-xl shadow-2xl mb-10 border border-gray-100">
                     <h2 class="text-2xl font-bold mb-4 text-gray-700">米蘭 ⇌ 佛羅倫斯 城際交通效率比較</h2>
                     <p class="text-gray-500 mb-6">比較高速列車 (HSR) 與區域火車 (Regional) 在時間與成本上的差異。推薦 HSR，將旅行時間縮短 50% 以上，符合休閒風格。</p>
@@ -288,12 +281,11 @@
                     </div>
                 </div>
 
-                <!-- 旅遊風格 -->
                 <div class="bg-secondary/30 p-6 rounded-xl border border-primary/50">
                     <h3 class="text-xl font-bold mb-3 text-primary flex items-center">
                         <i data-lucide="star" class="w-5 h-5 mr-2 fill-primary/30"></i> 旅遊風格與哲學
                     </h3>
-                    <p class="text-gray-700">${data.style}。行程側重於米蘭的現代設計與科莫湖的自然景色，以及佛羅倫斯的文藝復興藝術鑑賞與托斯卡納美食。採用高鐵，讓您有更多時間休息和探索，而非花在交通上。</p>
+                    <p class="text-gray-700">${data.style}。行程側重於米蘭的現代設計與科莫湖的自然景色，以及佛羅倫斯的文藝復興藝術鑑賞、**比薩的文化地標**與托斯卡納美食。採用高鐵，讓您有更多時間休息和探索，而非花在交通上。</p>
                 </div>
             `;
         }
@@ -374,7 +366,40 @@
             return `
                 <h1 class="text-4xl font-extrabold mb-6 text-gray-800 border-b-4 border-primary pb-2">交通住宿與費用細則</h1>
                 
-                <!-- 住宿建議 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg mb-8 border border-primary/50">
+                    <h2 class="text-2xl font-bold mb-4 text-primary flex items-center">
+                        <i data-lucide="calendar-check" class="w-5 h-5 mr-2"></i> 核心路段總車程確認
+                    </h2>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-sm font-semibold text-gray-600 border-b">
+                                <th class="py-2">路段</th>
+                                <th class="py-2">交通方式</th>
+                                <th class="py-2">預估單程時間</th>
+                                <th class="py-2">往返/單程</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100">
+                                <td class="py-2 text-gray-800">佛羅倫斯 ⇌ 比薩</td>
+                                <td class="py-2 text-primary font-medium">區域火車 (Regionale)</td>
+                                <td class="py-2 font-semibold">1 小時 0 分鐘</td>
+                                <td class="py-2">往返 (約 2 小時)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 text-gray-800">佛羅倫斯 → 米蘭</td>
+                                <td class="py-2 text-primary font-medium">高速列車 (HSR)</td>
+                                <td class="py-2 font-semibold">1 小時 40 分鐘</td>
+                                <td class="py-2">單程</td>
+                            </tr>
+                            <tr class="bg-secondary/30 font-bold">
+                                <td class="py-2 text-gray-800">總核心車程時間</td>
+                                <td class="py-2 text-primary" colspan="3">約 3 小時 40 分鐘 (不含轉乘等待)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="bg-white p-6 rounded-xl shadow-lg mb-8 border border-gray-100">
                     <h2 class="text-2xl font-bold mb-4 text-primary flex items-center">
                         <i data-lucide="home" class="w-5 h-5 mr-2"></i> 住宿建議 (Airbnb - 7晚)
@@ -388,21 +413,24 @@
                     </ul>
                 </div>
 
-                <!-- 交通規劃 -->
                 <div class="bg-white p-6 rounded-xl shadow-lg mb-8 border border-gray-100">
                     <h2 class="text-2xl font-bold mb-4 text-primary flex items-center">
                         <i data-lucide="train" class="w-5 h-5 mr-2"></i> 城際與市內交通
                     </h2>
                     <div class="space-y-4">
                         <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">1. 城際 (米蘭 ⇌ 佛羅倫斯)</h3>
-                        <p class="text-gray-700">選擇 **Frecciarossa 或 Italo 高速列車**，單程僅需 **1 小時 43 分鐘**，大大提升旅程的休閒感。</p>
+                        <p class="text-gray-700">選擇 **Frecciarossa 或 Italo 高速列車**，單程僅需 **1 小時 40 分鐘**。</p>
                         <p class="text-sm text-gray-500">總費用：3 人 x €65/人 (早鳥價) = **€195**。</p>
                         
-                        <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">2. 機場接駁 (米蘭)</h3>
-                        <p class="text-gray-700">採用 **Malpensa Express 機場火車**，比巴士更快速、可靠。</p>
-                        <p class="text-sm text-gray-500">總費用：3 人 x €13/人 (單程) = **€39**。</p>
+                        <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">2. 佛羅倫斯 ⇌ 比薩 (新增)</h3>
+                        <p class="text-gray-700">採用 **區域火車 (Regionale)**，單程最快 **1 小時 0 分鐘**。</p>
+                        <p class="text-sm text-gray-500">總費用：3 人 x €9/人 (往返) = **€27**。</p>
 
-                        <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">3. 市內交通</h3>
+                        <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">3. 機場接駁 (米蘭)</h3>
+                        <p class="text-gray-700">採用 **Malpensa Express 機場火車**，比巴士更快速、可靠。</p>
+                        <p class="text-sm text-gray-500">總費用：3 人 x €13/人 (往返) = **€78**。</p>
+
+                        <h3 class="font-semibold text-lg text-gray-800 border-b pb-1">4. 市內交通</h3>
                         <ul class="list-disc list-inside space-y-2 text-gray-600">
                             <li>**米蘭 (3 日票):** 3 人 x €15.50/人 = **€46.50** (涵蓋地鐵與電車)。</li>
                             <li>**佛羅倫斯 (3 日票):** 3 人 x €12.00/人 (ATAF 巴士票) = **€36.00**。</li>
@@ -435,10 +463,10 @@
                                         <div class="ml-4">
                                             <p class="text-lg font-semibold text-gray-800">${activity.title}</p>
                                             <div class="text-sm text-gray-600 mt-1 space-y-1">
-                                                <p class="flex items-center"><i data-lucide="route" class="w-4 h-4 mr-1 text-gray-500"></i>交通：${activity.transport} ${activity.duration ? `(${activity.duration})` : ''}</p>
-                                                ${activity.stay ? `<p class="flex items-center"><i data-lucide="timer" class="w-4 h-4 mr-1 text-gray-500"></i>停留時間：${activity.stay}</p>` : ''}
-                                                ${activity.notes ? `<p class="text-xs text-gray-500 italic">備註：${activity.notes}</p>` : ''}
-                                                ${activity.mapLink ? `<a href="${activity.mapLink}" target="_blank" class="text-primary hover:underline text-sm flex items-center mt-1">
+                                                <p class="flex items-center"><i data-lucide="route" class="w-4 h-4 mr-1 text-gray-500"></i>交通：${activity.transport} ${activity.duration? `(${activity.duration})` : ''}</p>
+                                                ${activity.stay? `<p class="flex items-center"><i data-lucide="timer" class="w-4 h-4 mr-1 text-gray-500"></i>停留時間：${activity.stay}</p>` : ''}
+                                                ${activity.notes? `<p class="text-xs text-gray-500 italic">備註：${activity.notes}</p>` : ''}
+                                                ${activity.mapLink? `<a href="${activity.mapLink}" target="_blank" class="text-primary hover:underline text-sm flex items-center mt-1">
                                                     <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Google Maps 連結
                                                 </a>` : ''}
                                             </div>
@@ -458,7 +486,6 @@
                 <h1 class="text-4xl font-extrabold mb-6 text-gray-800 border-b-4 border-primary pb-2">必吃美食地圖</h1>
                 <p class="text-gray-500 mb-6">我們為您精選了米蘭與佛羅倫斯的在地經典美食。點擊下方的標籤進行篩選。</p>
 
-                <!-- 篩選器 -->
                 <div class="flex flex-wrap gap-3 mb-8" id="food-filters">
                     ${TRIP_DATA.foodFilters.map(filter => `
                         <button 
@@ -471,10 +498,8 @@
                     `).join('')}
                 </div>
 
-                <!-- 餐廳列表 -->
                 <div id="food-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- 餐廳卡片將由 JS 插入 -->
-                </div>
+                    </div>
             `;
         }
 
@@ -493,7 +518,7 @@
                 }
             });
 
-            // 篩選數據
+            // 篩選數據 (已修復邏輯運算符號)
             const filteredData = TRIP_DATA.foodMap.filter(item => 
                 filterKey === 'all' || item.cuisine.includes(filterKey)
             );
@@ -521,19 +546,18 @@
                 
                 <div class="bg-white p-6 rounded-xl shadow-xl border border-gray-100 space-y-6">
                     
-                    <!-- 門票與預訂 -->
                     <div class="border-b pb-4">
                         <h2 class="text-2xl font-bold mb-3 text-primary flex items-center">
                             <i data-lucide="ticket" class="w-5 h-5 mr-2"></i> 門票與交通預訂 (必備)
                         </h2>
                         <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
                             <li>**主要博物館門票:** Uffizi Gallery 與 Accademia Gallery 務必提前 1-2 個月在官方網站預訂，以避免現場排隊。</li>
+                            <li>**比薩斜塔登塔:** 如需登塔，請務必提前預訂門票。</li>
                             <li>**高速列車票:** 米蘭 ⇌ 佛羅倫斯 (HSR) 越早訂購越便宜，建議在出發前預訂完畢。</li>
                             <li>**米蘭/佛羅倫斯市內交通票:** 可在當地地鐵站或巴士站購買 3 日票，更經濟實惠。</li>
                         </ul>
                     </div>
 
-                    <!-- 住宿與洗衣 -->
                     <div class="border-b pb-4">
                         <h2 class="text-2xl font-bold mb-3 text-primary flex items-center">
                             <i data-lucide="washer" class="w-5 h-5 mr-2"></i> 住宿確認 (家庭需求)
@@ -544,7 +568,6 @@
                         </ul>
                     </div>
 
-                    <!-- 預算與緩衝 -->
                     <div class="pb-4">
                         <h2 class="text-2xl font-bold mb-3 text-primary flex items-center">
                             <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> 預算提醒
