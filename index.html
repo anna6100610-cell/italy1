@@ -1,775 +1,442 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>義大利八日家庭之旅：客製化行程規劃 (修復版)</title>
+    <title>義大利八日家庭之旅 - 客製化行程與SPA藍圖</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
     <style>
-        /* 確保淺色系背景和專業風格 */
+        [cite_start]/* 自訂樣式，確保頁面背景簡潔 [cite: 104] */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f7f9fb;
-        }
-
-        /* 響應式時間軸的基礎樣式 */
-       .timeline-container {
-            position: relative;
-            max-width: 4xl;
-            margin: 0 auto;
-        }
-
-        /* 時間軸線 */
-       .timeline-container::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #3b82f6;
-            /* indigo-600 */
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            margin-left: -2px;
-            /* 在較大螢幕上居中 */
-            @media (min-width: 640px) {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        /* 時間軸節點 */
-       .timeline-item {
-            padding: 10px 0;
-            position: relative;
-            background-color: inherit;
-        }
-
-        /* 時間軸圓點 */
-       .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #3b82f6;
-            /* indigo-600 */
-            border: 4px solid #f7f9fb;
-            top: 15px;
-            border-radius: 50%;
-            z-index: 10;
-            left: 20px;
-            transform: translateX(-50%);
-            /* 在較大螢幕上居中 */
-            @media (min-width: 640px) {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        /* 左側內容在小螢幕上與時間軸對齊 */
-        @media (max-width: 639px) {
-           .timeline-content {
-                margin-left: 50px;
-            }
+            background-color: #f7f7f7; /* 淺色系背景 */
         }
     </style>
 </head>
+<body class="font-sans">
 
-<body>
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div id="navbar" class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-blue-800">🇮🇹 義大利八日家庭之旅</div>
+                <div class="flex space-x-4">
+                    <button class="nav-item text-gray-600 hover:text-blue-600" data-section="overview">行程總覽</button>
+                    <button class="nav-item text-gray-600 hover:text-blue-600" data-section="transport">交通住宿</button>
+                    <button class="nav-item text-gray-600 hover:text-blue-600" data-section="itinerary">每日行程</button>
+                    <button class="nav-item text-gray-600 hover:text-blue-600" data-section="gastronomy">美食地圖</button>
+                    <button class="nav-item text-gray-600 hover:text-blue-600" data-section="prep">行前準備</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <div id="app" class="min-h-screen">
-        <nav class="bg-white shadow-lg sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16">
-                    <div class="flex items-center">
-                        <h1 class="text-2xl font-bold text-gray-800">義大利家庭之旅 (8天)</h1>
+    <main class="container mx-auto px-4 py-8">
+        
+        <section id="overview" class="spa-section bg-white p-6 rounded-lg shadow-xl">
+            <h2 class="text-3xl font-extrabold mb-6 text-blue-700">📌 1. 行程總覽與預算策略</h2>
+            <div class="space-y-4 text-gray-700">
+                [cite_start]<p>本次行程為期 8 天 7 夜（2026年1月31日至2月7日），涵蓋米蘭、威尼斯、佛羅倫斯與比薩 [cite: 5][cite_start]。路線採用 **M → V → F → M** 的高效環線結構，主要依靠高速鐵路（HSR）減少轉場時間 [cite: 6]。</p>
+                [cite_start]<h3 class="text-xl font-semibold mt-4 mb-2 text-blue-600">住宿結構與節奏 (2-2-3-1 夜) [cite: 7]</h3>
+                <ul class="list-disc list-inside ml-4">
+                    [cite_start]<li>**米蘭 (D1-D2, 2晚)**：入境與在地美食探索 [cite: 8]。</li>
+                    [cite_start]<li>**威尼斯 (D3-D4, 2晚)**：平日（2/2 星期一）體驗嘉年華氛圍 [cite: 9, 15]。</li>
+                    [cite_start]<li>**佛羅倫斯 (D5-D7, 3晚)**：作為基地，進行文藝復興探索與比薩一日遊 [cite: 10, 12]。</li>
+                    [cite_start]<li>**米蘭 (D7, 宿在米蘭，D8離境)**：回程轉場 [cite: 11]。</li>
+                </ul>
+                [cite_start]<h3 class="text-xl font-semibold mt-4 mb-2 text-blue-600">預算分配概覽 (€240/天, 3人家庭) [cite: 28]</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-blue-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">類別</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">細項</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">預估總成本 (€)</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">佔總預算比例 (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">住宿 (7晚)</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Airbnb (附洗衣設備, 高低搭配)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">745</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">38.8%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">城際交通</td>
+                                <td class="px-6 py-4 whitespace-nowrap">HSR 7段票 (早鳥票價) + 機場快線</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">255</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">13.2%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">餐飲</td>
+                                <td class="px-6 py-4 whitespace-nowrap">自炊早餐/午餐小吃/晚餐 (6晚普通, 1晚高級)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">750</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">39.1%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">活動/當地交通</td>
+                                <td class="px-6 py-4 whitespace-nowrap">博物館門票、水上巴士、市內交通</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">170</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">8.9%</td>
+                            </tr>
+                            <tr class="font-bold bg-yellow-50">
+                                <td class="px-6 py-4 whitespace-nowrap">總計</td>
+                                <td class="px-6 py-4 whitespace-nowrap">8天7夜</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">1920</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right">100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                [cite_start]<p class="pt-4 text-sm text-gray-500">備註：威尼斯住宿費用較高 (€140/晚) 作為提升旅程品質的「高級」體驗點 [cite: 23, 24][cite_start]。餐飲主要依賴自炊早餐和街頭小吃以維持預算 [cite: 26]。</p>
+            </div>
+        </section>
+        
+        <section id="transport" class="spa-section bg-white p-6 rounded-lg shadow-xl hidden">
+            <h2 class="text-3xl font-extrabold mb-6 text-blue-700">🚄 2. 交通與住宿規劃</h2>
+            <div class="space-y-6 text-gray-700">
+                <h3 class="text-xl font-semibold text-blue-600">2.1. 義大利高速鐵路網絡與成本優化</h3>
+                [cite_start]<p>義大利高速鐵路（ItaloTreno / Trenitalia）是行程基石 [cite: 31][cite_start]。為控制在 €255 預算內，<strong>必須提前預訂早鳥票</strong> [cite: 32]。</p>
+                <div class="mt-4">
+                    [cite_start]<h4 class="text-lg font-medium mb-3">關鍵決策：MXP 機場接駁（火車 vs. 巴士） [cite: 34, 37]</h4>
+                    [cite_start]<p>建議選擇 <strong class="text-green-600">Malpensa Express 火車</strong> [cite: 37]：</p>
+                    <ul class="list-disc list-inside ml-4 text-sm">
+                        [cite_start]<li>**Malpensa Express**: 耗時約 52 分鐘，票價約 €15/人 [cite: 35, 16]。</li>
+                        [cite_start]<li>**巴士服務**: 耗時約 1 小時 10 分鐘，票價介於 €8-€12/人 [cite: 36, 17]。</li>
+                    </ul>
+                    [cite_start]<p class="mt-2">專業建議以略高成本換取約 18 分鐘的效率，提升家庭抵達後的舒適度 [cite: 37]。</p>
+                </div>
+
+                <div class="my-8">
+                    <h4 class="text-lg font-medium mb-3 text-center">交通路線時間與成本權衡圖 (Chart.js 雙軸圖)</h4>
+                    <canvas id="transportChart" class="w-full h-80"></canvas>
+                </div>
+                
+                <h3 class="text-xl font-semibold text-blue-600">2.2. [cite_start]家庭住宿策略：Airbnb (附洗衣設備) [cite: 41]</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    [cite_start]<li>**必備設施**：必須篩選帶有 **Washer** 設施的房源 [cite: 42, 10]。</li>
+                    [cite_start]<li>**米蘭/佛羅倫斯**：建議靠近**主要火車站**（Centrale/SMN），減少轉場搬運行李的體力消耗，符合休閒舒適風格 [cite: 44]。</li>
+                    [cite_start]<li>**威尼斯（高級日）**：二月平均房價高達 €135/晚 [cite: 12][cite_start]。建議避開聖馬可廣場，考慮 **Dorsoduro 或 Cannaregio 區**，提供更貼近在地生活的安靜環境，且需具備優良自炊條件以平衡預算 [cite: 45]。</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="itinerary" class="spa-section bg-white p-6 rounded-lg shadow-xl hidden">
+            <h2 class="text-3xl font-extrabold mb-6 text-blue-700">🗓️ 3. 每日行程時間軸 (Timeline)</h2>
+            [cite_start]<p class="mb-4 text-gray-600">（以下時間軸將在手機上自動調整為垂直單欄堆疊，以確保良好可讀性 [cite: 107]。）</p>
+
+            <div class="border-l-4 border-blue-500 pl-4 mb-8">
+                <h3 class="text-xl font-bold mb-2 text-blue-700">D1 (1/31, 六)：米蘭—入境與綠色休閒</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">08:00-09:00</p>
+                        <p>MXP → 米蘭中央車站 (Centrale)</p>
+                        [cite_start]<p class="text-sm text-gray-600">交通：Malpensa Express (52 分鐘) [cite: 16]</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
-                        <button onclick="showSection('overview', this)" id="nav-overview"
-                            class="nav-button text-gray-900 bg-gray-100 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100">行程總覽</button>
-                        <button onclick="showSection('transport', this)" id="nav-transport"
-                            class="nav-button text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">交通住宿</button>
-                        <button onclick="showSection('daily', this)" id="nav-daily"
-                            class="nav-button text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">每日行程</button>
-                        <button onclick="showSection('food', this)" id="nav-food"
-                            class="nav-button text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">美食地圖</button>
-                        <button onclick="showSection('prep', this)" id="nav-prep"
-                            class="nav-button text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium">行前準備</button>
+                    <div class="bg-blue-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">11:30-13:30</p>
+                        [cite_start]<p>探索米蘭綠肺：森皮奧內公園 (Parco Sempione) [cite: 7]</p>
+                        <p class="text-sm text-gray-600">停留：2 小時 (休閒)</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
-                    <div class="sm:hidden flex items-center">
-                        <button id="mobile-menu-btn" type="button"
-                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
-                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                    <div class="bg-blue-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">13:30-14:30</p>
+                        <p>午餐：米蘭街頭小吃 (Panzerotti 或 Pizza Slice)</p>
+                        <p class="text-sm text-gray-600">交通：步行</p>
+                        <a href="[在地小吃地圖]" target="_blank" class="text-xs text-blue-500 hover:underline">在地小吃地圖</a>
+                    </div>
+                     <div class="bg-blue-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">15:00-17:30</p>
+                        <p>米蘭大教堂 (Duomo di Milano) 及其廣場</p>
+                        [cite_start]<p class="text-sm text-gray-600">停留：2.5 小時 (外部觀賞為主) [cite: 19]</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
                 </div>
             </div>
-
-            <div class="sm:hidden hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <button onclick="showSection('overview', document.getElementById('nav-overview')); hideMobileMenu()"
-                        class="text-gray-900 hover:bg-gray-100 block w-full text-left px-3 py-2 rounded-md text-base font-medium">行程總覽</button>
-                    <button onclick="showSection('transport', document.getElementById('nav-transport')); hideMobileMenu()"
-                        class="text-gray-900 hover:bg-gray-100 block w-full text-left px-3 py-2 rounded-md text-base font-medium">交通住宿</button>
-                    <button onclick="showSection('daily', document.getElementById('nav-daily')); hideMobileMenu()"
-                        class="text-gray-900 hover:bg-gray-100 block w-full text-left px-3 py-2 rounded-md text-base font-medium">每日行程</button>
-                    <button onclick="showSection('food', document.getElementById('nav-food')); hideMobileMenu()"
-                        class="text-gray-900 hover:bg-gray-100 block w-full text-left px-3 py-2 rounded-md text-base font-medium">美食地圖</button>
-                    <button onclick="showSection('prep', document.getElementById('nav-prep')); hideMobileMenu()"
-                        class="text-gray-900 hover:bg-gray-100 block w-full text-left px-3 py-2 rounded-md text-base font-medium">行前準備</button>
+            
+            <div class="border-l-4 border-red-500 pl-4 mb-8">
+                <h3 class="text-xl font-bold mb-2 text-red-700">D3 (2/2, 一)：威尼斯嘉年華體驗 (Weekday) 與水都探索</h3>
+                [cite_start]<p class="text-sm italic mb-4 text-red-600">**核心要求達成**：在平日體驗嘉年華，2/2 星期一 [cite: 53, 15]。</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-red-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">09:30-12:30</p>
+                        [cite_start]<p>威尼斯嘉年華核心體驗 ：聖馬可廣場 [cite: 6]</p>
+                        <p class="text-sm text-gray-600">交通：步行/Vaporetto</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">12:30-13:30</p>
+                        [cite_start]<p>午餐：Rialto 附近的 Cicchetti (威尼斯小吃) [cite: 20]</p>
+                        <p class="text-sm text-gray-600">交通：步行</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">18:30-20:30</p>
+                        <p>晚餐： 高級住宿日 搭配在地海鮮 Trattoria (如 Antiche Carampane)</p>
+                        [cite_start]<p class="text-sm text-gray-600">類型：高級體驗點 [cite: 54, 23]</p>
+                        <a href="[Antiche Carampane (建議)]" target="_blank" class="text-xs text-blue-500 hover:underline">餐廳連結</a>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-
-            <section id="overview" class="p-6 bg-white shadow-xl rounded-lg mb-8">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 pb-2">行程總覽 (Milan-Venice-Florence-Pisa)
-                </h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">核心數據</h3>
-                        <ul class="space-y-2 text-gray-600">
-                            <li><span class="font-medium text-gray-800">旅遊天數：</span> 8 天 / 7 夜</li>
-                            <li><span class="font-medium text-gray-800">旅遊日期：</span> 2026/1/31 (六) - 2026/2/7 (六)</li>
-                            <li><span class="font-medium text-gray-800">同行成員：</span> 三人家庭 (親子休閒風格)</li>
-                            <li><span class="font-medium text-gray-800">核心主題：</span> 威尼斯嘉年華（平日體驗, 2/2）</li>
-                            <li><span class="font-medium text-gray-800">總預算目標：</span> €1,920 (平均 €240/天, 家庭共三人)</li>
-                        </ul>
+            
+            <div class="border-l-4 border-green-500 pl-4 mb-8">
+                <h3 class="text-xl font-bold mb-2 text-green-700">D6 (2/5, 四)：比薩一日遊與斜塔奇觀</h3>
+                [cite_start]<p class="text-sm italic mb-4 text-green-600">比薩為高效半日遊，單程火車僅約 51 分鐘 [cite: 60, 3]。</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">08:30-09:30</p>
+                        <p>佛羅倫斯 → 比薩中央車站</p>
+                        [cite_start]<p class="text-sm text-gray-600">交通：區間火車 (51 分鐘) [cite: 3]</p>
+                        <a href="[Pisa Centrale]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">城市與住宿策略 (M → V → F → M 環線)</h3>
-                        <div class="flex flex-wrap items-center space-x-2 text-lg font-bold text-indigo-600 mb-4">
-                            <span>米蘭 (2N)</span>
-                            <span class="text-gray-400">→</span>
-                            <span>威尼斯 (2N)</span>
-                            <span class="text-gray-400">→</span>
-                            <span>佛羅倫斯 (3N)</span>
-                            <span class="text-gray-400">→</span>
-                            <span>比薩 (1D)</span>
-                            <span class="text-gray-400">→</span>
-                            <span>米蘭 (1N)</span>
-                        </div>
-                        <p class="text-sm text-gray-500 italic">住宿策略：全程以 Airbnb (附洗衣間)
-                            為主，威尼斯為高價日（約 €146/晚 ），米蘭/佛羅倫斯為基礎價日（約 €97-103/晚 ），以平衡預算與品質。</p>
+                    <div class="bg-green-50 p-4 rounded-lg shadow-md">
+                        <p class="font-semibold">10:00-13:00</p>
+                        <p>奇蹟廣場：斜塔、大教堂、浸禮堂</p>
+                        <p class="text-sm text-gray-600">停留：3 小時</p>
+                        <a href="[Piazza dei Miracoli]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
                 </div>
-
-                <div class="mt-8 border-t pt-6">
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">8日家庭預算分配概覽 (€240/天)</h3>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        類別
-                                    </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        細項
-                                    </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        預估總成本 (€)
-                                    </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        佔總預算比例 (%)
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">住宿 (7晚)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Airbnb (附洗衣設備, 高低搭配)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">745</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">38.8%</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">城際交通</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">HSR 7段票 (早鳥票價) + 機場快線</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">255</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">13.2%</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">餐飲</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">自炊早餐/午餐小吃/晚餐 (6晚普通, 1晚高級)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">750</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">39.1%</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">活動/當地交通</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">博物館門票、水上巴士、市內交通</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">170</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">8.9%</td>
-                                </tr>
-                                <tr class="bg-yellow-50 font-bold">
-                                    <td class="px-6 py-4 whitespace-nowrap">總計</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">8天7夜</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">1920</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">100%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+            </div>
             </section>
-
-            <section id="transport" class="p-6 bg-white shadow-xl rounded-lg mb-8 hidden">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 pb-2">交通與住宿策略 (HSR & Airbnb)</h2>
-
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">城際交通時間與成本權衡 (家庭)</h3>
-                        <p class="text-sm text-gray-500 italic mb-4">圖表比較主要路線的**單人票價（預購早鳥票）**與最短車程時間。家庭總成本為單人票價 x 3。</p>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <canvas id="transportChart"></canvas>
-                        </div>
-
-                        <div class="mt-6">
-                            <h4 class="font-bold text-gray-700">交通方式建議:</h4>
-                            <ul class="list-disc list-inside text-gray-600 text-sm space-y-1 mt-2">
-                                <li>**機場接駁：** 推薦 **Malpensa Express** (火車)
-                                    ，單程約 52 分鐘，比巴士快約 18 分鐘 。</li>
-                                <li>**城際移動：** 採用高速鐵路 **Italo / Trenitalia**
-                                    ，需提早預訂 Super Economy 或 Economy 票種以鎖定最低價格 。</li>
-                                <li>**比薩一日遊：** 採用 Trenitalia 區間車，單程僅需 51 分鐘，票價約 $11.36 。</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">住宿規劃：家庭式 Airbnb (附洗衣設備)</h3>
-                        <div class="space-y-4">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-blue-800">米蘭 & 佛羅倫斯 (基礎舒適型)</h4>
-                                <p class="text-sm text-blue-700 mt-1">地點：靠近火車站 (Centrale / SMN) 或市中心地鐵站，減少轉場負擔 。</p>
-                                <p class="text-sm text-blue-700 mt-1">二月平均費用：米蘭約 €97/晚 ；佛羅倫斯約 €103/晚 。</p>
-                            </div>
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-green-800">威尼斯 (高級體驗日)</h4>
-                                <p class="text-sm text-green-700 mt-1">地點：推薦 Dorsoduro/Cannaregio 區域的房源，環境更貼近在地生活，避開聖馬可廣場人潮 [1, 2]。</p>
-                                <p class="text-sm text-green-700 mt-1">二月平均費用：約 €146/晚 。</p>
-                            </div>
-                        </div>
-                        <div class="mt-6 border-t pt-4">
-                            <h4 class="font-bold text-gray-700">住宿篩選要點：</h4>
-                            <ul class="list-disc list-inside text-gray-600 text-sm space-y-1 mt-2">
-                                <li>Airbnb 必須篩選具備 `Washer` (洗衣設施) 的房源 [3]。</li>
-                                <li>自炊：充分利用廚房設備準備早餐，以維持每日 €80/人的餐飲預算 。</li>
-                            </ul>
-                        </div>
-                    </div>
+        
+        <section id="gastronomy" class="spa-section bg-white p-6 rounded-lg shadow-xl hidden">
+            <h2 class="text-3xl font-extrabold mb-6 text-blue-700">🍽️ 4. 美食地圖與體驗</h2>
+            <div class="space-y-6 text-gray-700">
+                <h3 class="text-xl font-semibold text-blue-600">4.1. [cite_start]互動式篩選器 (Native JS 驅動) [cite: 78, 82]</h3>
+                <div id="filter-buttons" class="flex space-x-3 mb-6">
+                    <button data-filter="all" class="filter-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">全部</button>
+                    <button data-filter="Seafood" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">海鮮</button>
+                    <button data-filter="Snacks/Street Food" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">小吃/街頭食品</button>
+                    <button data-filter="Traditional Dining" class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">傳統正餐</button>
                 </div>
 
-            </section>
-
-            <section id="daily" class="p-6 bg-white shadow-xl rounded-lg mb-8 hidden">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 pb-2">每日行程時間軸 (D1 - D8)</h2>
-                <p class="text-sm text-gray-500 italic mb-6">點擊地點名稱可開啟 Google Maps 連結。</p>
-
-                <div class="timeline-container">
-
-                    <div class="timeline-item flex sm:justify-end">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">1/31 (六)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D1：米蘭—入境與綠色休閒</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**07:00-11:00** 入境 MXP → <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Malpensa+Express+to+Milano+Centrale"
-                                        target="_blank" class="text-blue-500 hover:underline">Malpensa Express</a> (52分) →
-                                    入住 </li>
-                                <li>**11:30-13:30** 探索：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Parco+Sempione+Milan"
-                                        target="_blank" class="text-blue-500 hover:underline">森皮奧內公園</a> - 2H (休閒)
-                                    </li>
-                                <li>**13:30-14:30** 午餐：在地街頭小吃 (Panzerotti/Pizza Slice) [4]</li>
-                                <li>**15:00-17:30** 城市地標：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Duomo+di+Milano"
-                                        target="_blank" class="text-blue-500 hover:underline">米蘭大教堂</a> (外部觀賞為主)
-                                    [5]</li>
-                                <li>**19:30-21:00** 晚餐：簡單 Osteria/自炊 </li>
-                            </ul>
-                        </div>
+                <div id="restaurant-list" class="grid md:grid-cols-2 gap-6">
+                    <div class="restaurant-card bg-gray-50 p-4 rounded-lg shadow-md" data-category="Traditional Dining">
+                        <h4 class="font-bold text-lg">Osteria La Piola (米蘭)</h4>
+                        <p class="text-sm text-gray-600">類型：傳統/在地 | [cite_start]必嚐：Risotto, Ossobuco [cite: 77, 14]</p>
+                        <p class="text-sm text-green-700">預算：€€</p>
+                        <a href="[Osteria La Piola (建議)]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
+                    </div>
+                    
+                    <div class="restaurant-card bg-gray-50 p-4 rounded-lg shadow-md" data-category="Traditional Dining, Premium">
+                        <h4 class="font-bold text-lg text-red-700">Trattoria Masuelli San Marco (米蘭, 高級餐)</h4>
+                        <p class="text-sm text-gray-600">類型：高級傳統 | [cite_start]必嚐：Ossobuco, Mondeghili [cite: 77, 14]</p>
+                        <p class="text-sm text-green-700">預算：€€€</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
 
-                    <div class="timeline-item flex sm:justify-start">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/1 (日)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D2：米蘭—歷史與轉場威尼斯</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**09:00-11:30** 探索：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Castello+Sforzesco+Milan"
-                                        target="_blank" class="text-blue-500 hover:underline">斯福爾扎城堡</a> - 2.5H (家庭友好)
-                                    [6]</li>
-                                <li>**11:30-13:00** 休閒：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Brera+district+Milan"
-                                        target="_blank" class="text-blue-500 hover:underline">布雷拉區</a> 散步 </li>
-                                <li>**14:00-15:30** 返回 Airbnb 領取行李，前往 <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Milano+Centrale"
-                                        target="_blank" class="text-blue-500 hover:underline">中央車站</a></li>
-                                <li>**16:00-18:15** <span class="font-semibold">HSR：米蘭 → 威尼斯</span> (2H 15M) </li>
-                                <li>**18:30-20:00** 轉場至威尼斯 Airbnb (需搭乘 Vaporetto 水上巴士)</li>
-                                <li>**20:00-21:30** 晚餐：威尼斯地區簡單晚餐/自炊 [1]</li>
-                            </ul>
-                        </div>
+                    <div class="restaurant-card bg-gray-50 p-4 rounded-lg shadow-md" data-category="Snacks/Street Food">
+                        <h4 class="font-bold text-lg">Da Nerbone (佛羅倫斯 中央市場)</h4>
+                        <p class="text-sm text-gray-600">類型：街頭小吃 | [cite_start]必嚐：Lampredotto, Trippa alla Fiorentina [cite: 77, 13]</p>
+                        <p class="text-sm text-green-700">預算：€</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
+                    </div>
+                    
+                    <div class="restaurant-card bg-gray-50 p-4 rounded-lg shadow-md" data-category="Seafood, Snacks/Street Food">
+                        <h4 class="font-bold text-lg">Cantina Do Spade (威尼斯)</h4>
+                        <p class="text-sm text-gray-600">類型：Cicchetti/小吃 | [cite_start]必嚐：Cicchetti (小份開胃菜) [cite: 77, 20]</p>
+                        <p class="text-sm text-green-700">預算：€</p>
+                        <a href="[地圖連結]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
 
-                    <div class="timeline-item flex sm:justify-end">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/2 (一) - 平日</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D3：威尼斯—嘉年華體驗與水都探索</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**09:30-12:30** **嘉年華體驗**：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=St+Mark%27s+Square+Venice"
-                                        target="_blank" class="text-blue-500 hover:underline">聖馬可廣場</a> 周邊盛裝遊客 - 3H
-                                    (初期平日氛圍) </li>
-                                <li>**12:30-13:30** 午餐：Rialto 附近的 Cicchetti (威尼斯小吃) </li>
-                                <li>**13:30-16:30** 離島：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Murano+Island+Venice"
-                                        target="_blank" class="text-blue-500 hover:underline">穆拉諾島</a> 參觀玻璃工藝 </li>
-                                <li>**16:30-18:00** 探索：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Rialto+Bridge+Venice"
-                                        target="_blank" class="text-blue-500 hover:underline">里亞爾托橋</a> (Ponte di Rialto)
-                                    區域 [7]</li>
-                                <li>**18:30-20:30** **高級晚餐日**：在地海鮮 Trattoria (如 Antiche Carampane) [8]</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item flex sm:justify-start">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/3 (二)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D4：威尼斯—離島與轉場佛羅倫斯</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**09:00-12:00** 離島：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Burano+Island+Venice"
-                                        target="_blank" class="text-blue-500 hover:underline">布拉諾島</a> - 彩色房屋拍照 - 3H
-                                    (含交通) </li>
-                                <li>**12:00-13:00** 午餐：返回主島簡餐/Cicchetti [9]</li>
-                                <li>**13:00-14:30** 自由活動/貢多拉遊船 (自選) [2]</li>
-                                <li>**14:30-15:30** 回 Airbnb 領行李，前往聖塔露西亞車站</li>
-                                <li>**16:00-18:00** <span class="font-semibold">HSR：威尼斯 → 佛羅倫斯</span> (2H 0M) 
-                                </li>
-                                <li>**18:30-20:00** 轉場至佛羅倫斯 Airbnb 入住 </li>
-                                <li>**20:00-21:30** 晚餐：佛羅倫斯在地晚餐 (Trattoria) </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item flex sm:justify-end">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/4 (三)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D5：佛羅倫斯—文藝復興與在地美食</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**09:00-11:30** <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Duomo+Florence"
-                                        target="_blank" class="text-blue-500 hover:underline">聖母百花大教堂</a> 及其廣場 - 2.5H
-                                    [10]</li>
-                                <li>**11:30-12:30** 午餐：街頭小吃 Lampredotto (如 <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale"
-                                        target="_blank" class="text-blue-500 hover:underline">Da Nerbone</a>) [11]</li>
-                                <li>**13:00-15:30** <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Ponte+Vecchio+Florence"
-                                        target="_blank" class="text-blue-500 hover:underline">老橋</a> 與阿諾河畔漫步 </li>
-                                <li>**16:00-18:00** **自然景觀**：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Piazzale+Michelangelo"
-                                        target="_blank" class="text-blue-500 hover:underline">米開朗基羅廣場</a> (城市全景) - 2H
-                                    </li>
-                                <li>**19:30-21:30** 晚餐：傳統托斯卡納 Trattoria (如 Trattoria Sabatino) [12]</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item flex sm:justify-start">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/5 (四)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D6：比薩—高效一日遊</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**08:30-09:30** <span class="font-semibold">區間火車：佛羅倫斯 → 比薩中央車站</span> (51分)
-                                    </li>
-                                <li>**10:00-13:00** <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Piazza+dei+Miracoli+Pisa"
-                                        target="_blank" class="text-blue-500 hover:underline">奇蹟廣場</a>：斜塔、大教堂、浸禮堂 -
-                                    3H </li>
-                                <li>**13:00-14:00** 午餐：比薩當地簡餐 </li>
-                                <li>**14:00-15:30** 休閒：阿諾河畔散步與聖瑪利亞教堂 <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Santa+Maria+della+Spina+Pisa"
-                                        target="_blank" class="text-blue-500 hover:underline"> [地圖]</a> [8]</li>
-                                <li>**16:00-17:00** <span class="font-semibold">區間火車：比薩 → 佛羅倫斯 SMN 車站</span> (51分)
-                                    </li>
-                                <li>**19:30-21:00** 晚餐：Scegliaccia 三明治或在地 Trattoria [12]</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item flex sm:justify-end">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/6 (五)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D7：轉場回米蘭與壓軸高級晚餐</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**09:30-12:00** 探索：<a
-                                        href="https://www.google.com/maps/search/?api=1&query=Oltrarno+Florence"
-                                        target="_blank" class="text-blue-500 hover:underline">奧爾特拉諾區</a> 藝術工匠區或自由活動
-                                    </li>
-                                <li>**13:30-14:30** 領取行李，前往佛羅倫斯 SMN 車站</li>
-                                <li>**15:00-16:45** <span class="font-semibold">HSR：佛羅倫斯 → 米蘭中央車站</span> (1H 43M)
-                                    </li>
-                                <li>**17:00-18:00** 前往米蘭中央車站附近 Airbnb 入住 [13]</li>
-                                <li>**19:30-21:30** **高級晚餐體驗**：傳統米蘭美食 (如 <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Trattoria+Masuelli+San+Marco"
-                                        target="_blank" class="text-blue-500 hover:underline">Trattoria Masuelli San
-                                        Marco</a>) </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item flex sm:justify-start">
-                        <div
-                            class="timeline-content order-1 sm:w-5/12 w-full sm:px-6 py-4 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-xs text-gray-500">2/7 (六)</p>
-                            <h3 class="mb-3 font-bold text-lg text-indigo-600">D8：米蘭—離境準備</h3>
-                            <ul class="text-sm space-y-2 text-gray-700">
-                                <li>**08:00-09:30** 早餐與最後準備</li>
-                                <li>**09:30-10:30** <span class="font-semibold">Malpensa Express：米蘭中央車站 $\rightarrow$ MXP
-                                        機場</span> (52分) </li>
-                                <li>**11:00** MXP 機場離境</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="food" class="p-6 bg-white shadow-xl rounded-lg mb-8 hidden">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 pb-2">美食地圖 (精選餐廳推薦)</h2>
-                <p class="text-sm text-gray-500 italic mb-4">精選各城市 2-3 間必嚐在地美食，請利用下方的篩選器快速尋找。</p>
-
-                <div class="flex flex-wrap gap-3 mb-8">
-                    <button id="filter-all" onclick="filterRestaurants('All', this)"
-                        class="food-filter-btn px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-medium hover:bg-indigo-700 transition">所有餐廳</button>
-                    <button onclick="filterRestaurants('Seafood', this)"
-                        class="food-filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition">海鮮 (Seafood)</button>
-                    <button onclick="filterRestaurants('Street Food', this)"
-                        class="food-filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition">小吃/街頭食品
-                        (Street Food)</button>
-                    <button onclick="filterRestaurants('Traditional Dining', this)"
-                        class="food-filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-300 transition">傳統正餐
-                        (Traditional Dining)</button>
-                </div>
-
-                <div id="restaurant-list" class="grid lg:grid-cols-3 md:grid-cols-2 gap-6">
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Traditional Dining" data-city="Milan">
-                        <h4 class="text-xl font-bold text-gray-800">Osteria La Piola</h4>
-                        <p class="text-indigo-600 font-medium">米蘭 | 傳統/在地</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：Risotto alla Milanese (米蘭燉飯)、Cotoletta (炸肉排) </p>
-                        <p class="text-sm text-gray-600">預算：€€ (中等)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Osteria+La+Piola+Milan" target="_blank"
-                            class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google Maps 連結</a>
-                    </div>
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Traditional Dining" data-city="Milan">
-                        <h4 class="text-xl font-bold text-gray-800">Trattoria Masuelli San Marco</h4>
-                        <p class="text-indigo-600 font-medium">米蘭 | 高級傳統 (D7 壓軸晚餐)</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：Ossobuco (燉牛膝)、Mondeghili (米蘭肉丸) </p>
-                        <p class="text-sm text-gray-600">預算：€€€ (較高)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Trattoria+Masuelli+San+Marco"
-                            target="_blank" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google
-                            Maps 連結</a>
-                    </div>
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Street Food" data-city="Florence">
-                        <h4 class="text-xl font-bold text-gray-800">Da Nerbone (中央市場)</h4>
-                        <p class="text-indigo-600 font-medium">佛羅倫斯 | 街頭小吃 (省預算首選)</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：Lampredotto (牛肚包)、燉牛肉三明治 [11, 12]</p>
-                        <p class="text-sm text-gray-600">預算：€ (低)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Da+Nerbone+Mercato+Centrale"
-                            target="_blank" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google
-                            Maps 連結</a>
-                    </div>
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Traditional Dining" data-city="Florence">
-                        <h4 class="text-xl font-bold text-gray-800">Trattoria Sabatino</h4>
-                        <p class="text-indigo-600 font-medium">佛羅倫斯 | 傳統/預算</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：Ribollita (蔬菜麵包湯)、托斯卡納農家菜 [12, 14]</p>
-                        <p class="text-sm text-gray-600">預算：€€ (中低)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Trattoria+Sabatino+Florence"
-                            target="_blank" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google
-                            Maps 連結</a>
-                    </div>
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Street Food" data-city="Venice">
-                        <h4 class="text-xl font-bold text-gray-800">Cantina Do Spade</h4>
-                        <p class="text-indigo-600 font-medium">威尼斯 | Cicchetti/小吃 (預算型晚餐)</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：Cicchetti (特色小份開胃菜)、在地葡萄酒 </p>
-                        <p class="text-sm text-gray-600">預算：€ (低)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Cantina+Do+Spade+Venice" target="_blank"
-                            class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google Maps 連結</a>
-                    </div>
-
-                    <div class="restaurant-card p-4 border rounded-lg bg-gray-50 hover:shadow-lg transition duration-300"
-                        data-category="Seafood, Traditional Dining" data-city="Venice">
-                        <h4 class="text-xl font-bold text-gray-800">Antiche Carampane</h4>
-                        <p class="text-indigo-600 font-medium">威尼斯 | 海鮮/高級</p>
-                        <p class="text-sm text-gray-600 mt-2">必嚐菜餚：新鮮海鮮、在地漁獲 (建議 D3 或 D4 晚餐) </p>
-                        <p class="text-sm text-gray-600">預算：€€€ (較高)</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Antiche+Carampane+Venice"
-                            target="_blank" class="text-blue-500 hover:text-blue-700 text-sm font-medium mt-3 inline-block">Google
-                            Maps 連結</a>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="prep" class="p-6 bg-white shadow-xl rounded-lg mb-8 hidden">
-                <h2 class="text-3xl font-extrabold text-gray-800 mb-6 border-b-2 pb-2">行前準備 (家庭與冬季清單)</h2>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">文件與實用資訊</h3>
-                        <ul class="list-disc list-inside text-gray-600 space-y-3 text-sm">
-                            <li>**必備文件：** 護照、機票、旅行保險、住宿及火車車票的紙本/電子副本 [15, 16]。</li>
-                            <li>**親子證明：** 攜帶孩子的出生證明或相關文件，以備邊境檢查（尤其當姓氏不同時） [15]。</li>
-                            <li>**電器準備：** 義大利插座為兩圓孔，需準備**歐規轉接頭**和延長線 [17]。</li>
-                            <li>**藥物：** 備妥個人藥物及處方籤翻譯本，以及基本急救包 [15, 16]。</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-gray-700 mb-3">冬季衣物與著裝建議</h3>
-                        <div class="bg-yellow-50 p-4 rounded-lg">
-                            <h4 class="font-bold text-yellow-800">冬季洋蔥式穿法 (1月底 - 2月初)</h4>
-                            <p class="text-sm text-yellow-700 mt-2">義大利此時濕冷，威尼斯濕度高體感更低，需保暖與防風防水 [15]。</p>
-                            <ul class="list-disc list-inside text-sm text-yellow-900 mt-2 space-y-1">
-                                <li>**內層：** 保暖內衣 (Thermal Top) [15]。</li>
-                                <li>**外層：** 具備**防風、防水**功能的冬季夾克 [15]。</li>
-                                <li>**配件：** 圍巾、手套、帽子為必需品 [15]。</li>
-                                <li>**鞋類：** 選擇防雨、保暖的休閒鞋或踝靴 [15]。</li>
-                                <li>**教堂著裝：** 參觀教堂時，須遵守遮蓋膝蓋和肩膀的規定 [18]。</li>
-                            </ul>
-                        </div>
+                    <div class="restaurant-card bg-gray-50 p-4 rounded-lg shadow-md" data-category="Seafood, Traditional Dining, Premium">
+                        <h4 class="font-bold text-lg text-red-700">Antiche Carampane (威尼斯)</h4>
+                        <p class="text-sm text-gray-600">類型：海鮮/傳統 | [cite_start]必嚐：新鮮海鮮、在地漁獲 [cite: 77, 23]</p>
+                        <p class="text-sm text-green-700">預算：€€€</p>
+                        <a href="[Antiche Carampane (建議)]" target="_blank" class="text-xs text-blue-500 hover:underline">地圖連結</a>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <section id="prep" class="spa-section bg-white p-6 rounded-lg shadow-xl hidden">
+            <h2 class="text-3xl font-extrabold mb-6 text-blue-700">🧳 5. 行前準備與實用資訊</h2>
+            <div class="space-y-6 text-gray-700">
+                <h3 class="text-xl font-semibold text-blue-600">5.1. [cite_start]文件與通訊 [cite: 84]</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    [cite_start]<li>**必備文件**：護照、機票、旅行保險、所有住宿和高鐵票的紙本/電子副本 [cite: 85, 24]。</li>
+                    [cite_start]<li>**親子證明**：若孩子姓氏與同行成人不同，應準備出生證明或其他文件以證明親子關係，備用邊境檢查 [cite: 85, 24]。</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-blue-600">5.2. [cite_start]冬季衣物與打包清單 [cite: 86]</h3>
+                [cite_start]<p>行程在冬季末期（一月底至二月初），建議採用 **「洋蔥式穿法」**（多層次穿著）應對濕冷天氣 [cite: 87, 88]。</p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    [cite_start]<li>**外層**：必須具備 **防風、防水** 功能的厚外套或冬季夾克，尤其在威尼斯 [cite: 91, 24]。</li>
+                    [cite_start]<li>**鞋類**：選擇防雨、保暖的休閒鞋或踝靴 [cite: 93]。</li>
+                    [cite_start]<li>**著裝規範**：參觀米蘭大教堂等宗教場所時，女性需遮蓋膝蓋和肩膀 [cite: 94, 19]。</li>
+                </ul>
+            </div>
+        </section>
 
-            </section>
-
-        </main>
-    </div>
+    </main>
 
     <script>
-        // 1. 導覽列切換邏輯 (SPA Navigation)
-        function showSection(sectionId, clickedButton = null) {
-            const sections = ['overview', 'transport', 'daily', 'food', 'prep'];
+        [cite_start]// 1. 導覽列切換邏輯 (SPA 導航) [cite: 106, 121]
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.spa-section');
 
-            // 1. 隱藏所有區塊
-            sections.forEach(id => {
-                const section = document.getElementById(id);
-                if (section) {
-                    section.classList.add('hidden');
-                }
-            });
+            // 預設顯示第一個區塊
+            const showSection = (targetId) => {
+                sections.forEach(section => {
+                    section.classList.add('hidden'); // 隱藏所有區塊
+                });
+                document.getElementById(targetId).classList.remove('hidden'); // 顯示目標區塊
 
-            // 2. 顯示目標區塊
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            }
-
-            // 3. 更新導覽列按鈕樣式 (僅限桌面導覽列)
-            document.querySelectorAll('.nav-button').forEach(btn => {
-                btn.classList.remove('bg-gray-100');
-            });
-
-            if (clickedButton) {
-                // 如果是移動端按鈕觸發，我們需要找到對應的桌面按鈕 ID
-                const desktopButtonId = 'nav-' + sectionId;
-                const desktopButton = document.getElementById(desktopButtonId);
-                if (desktopButton) {
-                    desktopButton.classList.add('bg-gray-100');
-                } else {
-                    // 處理移動端按鈕樣式 (如果需要)
-                }
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // 平滑滾動到頂部
-            
-            // 重新繪製 Chart.js 圖表，以確保在區塊切換後正確顯示
-            if (sectionId === 'transport') {
-                setTimeout(initializeChart, 10);
-            }
-        }
-
-        // 手機選單切換
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        function hideMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu &&!menu.classList.contains('hidden')) {
-                menu.classList.add('hidden');
-            }
-        }
-
-
-        // 2. 美食分類篩選器邏輯 (Native JS Filtering)
-        function filterRestaurants(category, clickedButton) {
-            const cards = document.querySelectorAll('.restaurant-card');
-            cards.forEach(card => {
-                // 處理多個類別: "Seafood, Traditional Dining" -> 拆分為陣列
-                const categories = card.getAttribute('data-category').split(',').map(c => c.trim());
-
-                // 邏輯：如果是 'All' 或卡片包含目標類別，則顯示
-                if (category === 'All' |
-
-| categories.includes(category)) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            // 更新按鈕樣式
-            document.querySelectorAll('.food-filter-btn').forEach(button => {
-                button.classList.remove('bg-indigo-600', 'text-white');
-                button.classList.add('bg-gray-200', 'text-gray-700');
-            });
-
-            if (clickedButton) {
-                clickedButton.classList.remove('bg-gray-200', 'text-gray-700');
-                clickedButton.classList.add('bg-indigo-600', 'text-white');
-            }
-        }
-
-
-        // 3. Chart.js 數據視覺化 (交通時間與成本)
-        let transportChartInstance = null; // 用於存儲 Chart 實例，避免重複創建
-
-        function initializeChart() {
-            const ctx = document.getElementById('transportChart');
-
-            // 如果 Chart 實例已存在，先銷毀它
-            if (transportChartInstance) {
-                transportChartInstance.destroy();
-            }
-
-            // 數據來自初始報告中的 "高速鐵路交通時間與費用概覽" 表格
-            const transportData = {
-                labels: ['MXP→米蘭中央車站', '米蘭→威尼斯', '威尼斯→佛羅倫斯', '佛羅倫斯→米蘭'],
-                // 時間數據 (分鐘)
-                time: [
-                    52, // Malpensa Express 
-                    135, // HSR (2h 15m) 
-                    120, // HSR (2h 0m) 
-                    103 // HSR (1h 43m) ,
-                // 成本數據 (家庭三人總計歐元 - 早鳥票價)
-                cost: [
-                    15 * 3, // €15/人 
-                    14.90 * 3, // €14.90/人 
-                    18.90 * 3, // €18.90/人 
-                    17.90 * 3 // €17.90/人 
+                // 更新按鈕樣式
+                navItems.forEach(item => {
+                    if (item.getAttribute('data-section') === targetId) {
+                        item.classList.remove('text-gray-600', 'bg-white');
+                        item.classList.add('text-blue-800', 'font-bold', 'bg-blue-100', 'rounded-full', 'px-3');
+                    } else {
+                        item.classList.add('text-gray-600', 'bg-white');
+                        item.classList.remove('text-blue-800', 'font-bold', 'bg-blue-100', 'rounded-full', 'px-3');
+                    }
+                });
             };
 
-            transportChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: transportData.labels,
-                    datasets:
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function (context) {
-                                    let label = context.dataset.label |
+            // 監聽導覽列點擊事件
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const targetSection = e.target.getAttribute('data-section');
+                    showSection(targetSection);
+                });
+            });
 
-| '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y!== null) {
-                                        if (context.dataset.yAxisID === 'y') {
-                                            label += context.parsed.y + ' 分鐘';
-                                        } else {
-                                            label += '€' + parseFloat(context.parsed.y).toFixed(2);
-                                        }
-                                    }
-                                    return label;
-                                }
-                            }
+            // 網頁載入時預設顯示 'overview' 區塊
+            showSection('overview');
+        });
+
+
+        [cite_start]// 2. 美食分類篩選器邏輯 [cite: 78, 82, 121]
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const restaurantCards = document.querySelectorAll('.restaurant-card');
+
+            const filterRestaurants = (category) => {
+                restaurantCards.forEach(card => {
+                    const categories = card.getAttribute('data-category');
+                    card.classList.remove('hidden'); // 先顯示所有卡片
+
+                    if (category === 'all') {
+                        // 如果是 '全部'，不做任何隱藏動作
+                    } else if (categories && !categories.includes(category)) {
+                        [cite_start]// 如果卡片的類別不包含選定的類別，則隱藏 [cite: 82]
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // 更新按鈕樣式
+                filterButtons.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === category) {
+                        btn.classList.remove('bg-gray-200', 'text-gray-800');
+                        btn.classList.add('bg-blue-500', 'text-white');
+                    } else {
+                        btn.classList.add('bg-gray-200', 'text-gray-800');
+                        btn.classList.remove('bg-blue-500', 'text-white');
+                    }
+                });
+            };
+
+            // 監聽篩選按鈕點擊事件
+            filterButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const category = e.target.getAttribute('data-filter');
+                    filterRestaurants(category);
+                });
+            });
+
+            // 預設選擇 '全部'
+            filterRestaurants('all');
+        });
+
+
+        [cite_start]// 3. Chart.js 數據視覺化 (雙軸圖) [cite: 109, 110]
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('transportChart');
+
+            if (ctx) {
+                [cite_start]// 數據來自 Section 2.1 表格和 MXP 接駁分析 [cite: 39, 40]
+                const data = {
+                    labels: [
+                        'MXP → 米蘭 (火車)', 'MXP → 米蘭 (巴士)', 
+                        '米蘭 → 威尼斯 (HSR)', '威尼斯 → 佛羅倫斯 (HSR)', 
+                        '佛羅倫斯 → 比薩 (區間)', '佛羅倫斯 → 米蘭 (HSR)'
+                    ],
+                    datasets: [
+                        {
+                            label: '旅行時間 (分鐘)',
+                            [cite_start]data: [52, 70, 135, 120, 51, 103], // 時間數據 [cite: 16, 17, 15, 2, 3, 1]
+                            backgroundColor: 'rgba(59, 130, 246, 0.6)', // 藍色 (Tailwind blue-500)
+                            borderColor: 'rgb(59, 130, 246)',
+                            borderWidth: 1,
+                            yAxisID: 'yTime', // 對應左 Y 軸
+                        },
+                        {
+                            label: '家庭總成本 (€)',
+                            [cite_start]data: [15*3, 12*3, 14.9*3, 18.9*3, 10.5*3, 17.9*3], // 家庭成本 (3人總和) [cite: 16, 17, 15, 2, 3, 1]
+                            backgroundColor: 'rgba(234, 179, 8, 0.6)', // 黃色 (Tailwind yellow-500)
+                            borderColor: 'rgb(234, 179, 8)',
+                            borderWidth: 1,
+                            type: 'line', // 使用折線圖表示成本，視覺區分度更高
+                            yAxisID: 'yCost', // 對應右 Y 軸
                         }
-                    },
-                    scales: {
-                        x: {
-                            grid: { display: false }
-                        },
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
+                    ]
+                };
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false, // 允許自訂高度
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
                             title: {
-                                display: true,
-                                text: '時間 (分鐘)',
-                                color: 'rgba(59, 130, 246, 1)'
+                                display: false,
                             },
-                            beginAtZero: true
+                            [cite_start]tooltip: { // 啟用原生提示框 [cite: 116]
+                                mode: 'index',
+                                intersect: false,
+                            }
                         },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: {
+                        scales: {
+                            [cite_start]yTime: { // 左 Y 軸：時間 [cite: 115]
+                                type: 'linear',
                                 display: true,
-                                text: '家庭總成本 (€)',
-                                color: 'rgba(234, 179, 8, 1)'
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: '旅行時間 (分鐘)',
+                                    color: 'rgb(59, 130, 246)'
+                                },
+                                ticks: {
+                                    color: 'rgb(59, 130, 246)'
+                                }
                             },
-                            grid: {
-                                drawOnChartArea: false
-                            },
-                            ticks: {
-                                callback: function (value) {
-                                    return '€' + value;
+                            [cite_start]yCost: { // 右 Y 軸：成本 [cite: 115]
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: '家庭總成本 (€)',
+                                    color: 'rgb(234, 179, 8)'
+                                },
+                                grid: {
+                                    drawOnChartArea: false, // 避免右軸網格線與左軸重疊
+                                },
+                                ticks: {
+                                    color: 'rgb(234, 179, 8)'
                                 }
                             }
                         }
                     }
-                }
-            });
-        }
-
-        // 初始化：預設顯示 'overview'、設置按鈕樣式和初始化圖表
-        document.addEventListener('DOMContentLoaded', () => {
-            // 由於 SPA 導覽邏輯是通過 JS 控制的，這裡手動初始化
-            showSection('overview', document.getElementById('nav-overview'));
-            
-            // 初始化美食篩選器樣式
-            filterRestaurants('All', document.getElementById('filter-all'));
+                });
+            }
         });
-
     </script>
 </body>
-
 </html>
